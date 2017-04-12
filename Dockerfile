@@ -1,3 +1,4 @@
+FROM idekernel/kernel
 FROM php
 RUN docker-php-source extract \
 	# do important things \
