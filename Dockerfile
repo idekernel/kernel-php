@@ -17,5 +17,5 @@ RUN docker-php-source extract \
 	&& docker-php-source delete
 USER root
 RUN wget --quiet https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar && \
-    php ./jupyter-php-installer.phar install.
+    php ./jupyter-php-installer.phar install
 USER $NB_USER
