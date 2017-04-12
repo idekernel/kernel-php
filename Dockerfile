@@ -6,9 +6,7 @@ RUN apt-get update && apt-get -yq dist-upgrade \
     libav-tools \
     wget \
     bzip2 \
-    ca-certificates \
     sudo \
-    locales \
     git \
     vim \
     && apt-get clean \
@@ -19,5 +17,5 @@ RUN docker-php-source extract \
 	&& docker-php-source delete
 USER root
 RUN wget --quiet https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar && \
-    ./jupyter-php-installer.phar install
+    php ./jupyter-php-installer.phar install.
 USER $NB_USER
