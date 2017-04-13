@@ -13,6 +13,7 @@ RUN apt-get update && apt-get -yq dist-upgrade \
     && rm -rf /var/lib/apt/lists/*
 RUN docker-php-source extract \
 	# do important things \
+	composer \
 	php-zmq \
 	&& docker-php-source delete
 USER root
