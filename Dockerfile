@@ -1,21 +1,13 @@
 FROM idekernel/kernel
 FROM php
-
-RUN apt-get update && apt-get -yq dist-upgrade \
-    && apt-get install -yq --no-install-recommends \
-    libav-tools \
-    wget \
-    bzip2 \
-    sudo \
-    git \
-    vim \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-RUN docker-php-source extract \
-	# do important things \
-	composer \
-	php-zmq \
-	&& docker-php-source delete
+RUN apt-get update && apt-get install -y \
+		libfreetype6-dev \
+		libjpeg62-turbo-dev \
+		libmcrypt-dev \
+		libpng12-dev \
+	&& docker-php-ext-install -j$(nproc) iconv mcrypt \
+	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+	&& docker-php-ext-install -j$(nproc) gd
 USER root
 #RUN php -r "eval('?>'.file_get_contents('http://getcomposer.org/installer'));"
 RUN wget --quiet https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar && \
