@@ -16,7 +16,7 @@ RUN docker-php-source extract \
 	php-zmq \
 	&& docker-php-source delete
 USER root
-RUN wget -s -O - "https://getcomposer.org/installer" | php -- --disable-tls
+RUN php -r "eval('?>'.file_get_contents('http://getcomposer.org/installer'));"
 RUN wget --quiet https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar && \
     php ./jupyter-php-installer.phar install
 USER $NB_USER
