@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-install -j$(nproc) gd
 USER root
 #RUN php -r "eval('?>'.file_get_contents('http://getcomposer.org/installer'));"
-RUN wget --quiet https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar && \
-    php ./jupyter-php-installer.phar install
+#RUN wget --quiet https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar && \
+#    php ./jupyter-php-installer.phar install
 USER $NB_USER
 USER root
