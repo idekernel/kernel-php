@@ -7,8 +7,7 @@ RUN apt-get update && apt-get install -y \
 		libpng12-dev \
 		wget \
 		vim \
-		composer \
-	&& docker-php-ext-install -j$(nproc) iconv mcrypt composer \
+	&& docker-php-ext-install -j$(nproc) iconv mcrypt \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install -j$(nproc) gd
 USER root
@@ -16,3 +15,4 @@ USER root
 RUN wget --quiet https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar && \
     php ./jupyter-php-installer.phar install
 USER $NB_USER
+USER root
