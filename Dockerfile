@@ -23,7 +23,8 @@ RUN git clone https://github.com/mkoppanen/php-zmq.git \
 	&& cd php-zmq \
 	&& /usr/local/php/bin/phpize \
 	&& ./configure --with-php-config=/usr/local/php/bin/php-config  --with-zmq=/usr/local/zeromq
-	&& make && make install
+	&& make \
+	&& make install
 #RUN php -r "eval('?>'.file_get_contents('http://getcomposer.org/installer'));"
 RUN wget --quiet https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar && \
     php ./jupyter-php-installer.phar install
