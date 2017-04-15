@@ -17,7 +17,8 @@ RUN wget --quiet https://github.com/zeromq/libzmq/releases/download/v4.2.1/zerom
 	&& tar zxvf zeromq-4.2.1.tar.gz \
 	&& cd zeromq-4.2.1 \
 	&& ./configure --prefix=/usr/local/zeromq \
-	&& make && make install
+	&& make \
+	&& make install
 #install php-zmq
 RUN git clone https://github.com/mkoppanen/php-zmq.git \
 	&& cd php-zmq \
