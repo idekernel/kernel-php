@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 		vim \
 		git \
 	&& docker-php-ext-install -j$(nproc) iconv mcrypt \
-	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+        && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install -j$(nproc) gd
 USER root
 #install zeromq
@@ -21,11 +21,10 @@ RUN wget --quiet https://github.com/zeromq/libzmq/releases/download/v4.2.1/zerom
 	&& make install
 #install php-zmq
 RUN git clone https://github.com/mkoppanen/php-zmq.git \
-	&& cd php-zmq \
-	&& /usr/local/bin/phpize \
-	&& ./configure --with-php-config=/usr/local/bin/php-config  --with-zmq=/usr/local/zeromq \
-	&& make \
-	&& make install
+	&& mv php-zmq/ /usr/src/php/ext/ \
+	&& docker-php-ext-configure php-zmq --with-php-config=/usr/local/bin/php-config  --with-zmq=/usr/local/zeromq \
+	&& docker-php-ext-install -j$(nproc) php-zmq \
+	
 #RUN php -r "eval('?>'.file_get_contents('http://getcomposer.org/installer'));"
 RUN curl -sS https://getcomposer.org/installer | php \
         && mv composer.phar /usr/local/bin/composer
