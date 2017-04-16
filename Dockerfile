@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 USER root
 #install zeromq
 RUN wget --quiet https://github.com/zeromq/libzmq/releases/download/v4.2.1/zeromq-4.2.1.tar.gz \
-	&& tar zxvf zeromq-4.2.1.tar.gz \
+	&& tar zxf zeromq-4.2.1.tar.gz \
 	&& cd zeromq-4.2.1 \
 	&& ./configure --prefix=/usr/local/zeromq \
 	&& make \
@@ -29,6 +29,6 @@ RUN git clone https://github.com/mkoppanen/php-zmq.git \
 #RUN php -r "eval('?>'.file_get_contents('http://getcomposer.org/installer'));"
 RUN curl -sS https://getcomposer.org/installer | php \
         && mv composer.phar /usr/local/bin/composer
-RUN wget --quiet https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar && \
-    php ./jupyter-php-installer.phar install
+RUN wget --quiet https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar \
+    && php ./jupyter-php-installer.phar install
 USER $NB_USER
