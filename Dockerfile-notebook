@@ -1,5 +1,5 @@
-FROM idekernel/kernel:notebook
 FROM php
+FROM idekernel/kernel:notebook
 RUN apt-get update && apt-get install -y \
 		libfreetype6-dev \
 		libjpeg62-turbo-dev \
