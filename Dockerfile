@@ -23,7 +23,7 @@ RUN wget --quiet https://github.com/zeromq/libzmq/releases/download/v4.2.1/zerom
 RUN git clone https://github.com/mkoppanen/php-zmq.git \
 	&& cd php-zmq \
 	&& /usr/local/bin/phpize \
-	&& ./configure --with-php-config=/usr/local/php/bin/php-config  --with-zmq=/usr/local/zeromq \
+	&& ./configure --with-php-config=/usr/local/bin/php-config  --with-zmq=/usr/local/zeromq \
 	&& make \
 	&& make install
 #RUN php -r "eval('?>'.file_get_contents('http://getcomposer.org/installer'));"
