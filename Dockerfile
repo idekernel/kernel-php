@@ -1,7 +1,7 @@
 FROM idekernel/kernel
 FROM php
 RUN apt-get update && apt-get install -y \
-                php7-dev \
+                php5-dev \
 		libfreetype6-dev \
 		libjpeg62-turbo-dev \
 		libmcrypt-dev \
