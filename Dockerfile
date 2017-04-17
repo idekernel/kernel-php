@@ -1,5 +1,6 @@
 FROM php
 FROM idekernel/kernel
+USER root
 RUN apt-get update && apt-get install -y \
 		libfreetype6-dev \
 		libjpeg62-turbo-dev \
@@ -11,7 +12,6 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-install -j$(nproc) iconv mcrypt \
         && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install -j$(nproc) gd
-USER root
 #install zeromq
 RUN wget --quiet https://github.com/zeromq/libzmq/releases/download/v4.2.1/zeromq-4.2.1.tar.gz \
 	&& tar zxf zeromq-4.2.1.tar.gz \
