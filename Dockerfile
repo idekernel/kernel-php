@@ -5,9 +5,9 @@
 #
 
 FROM debian:jessie
-FROM idekernel/kernel
+#FROM idekernel/kernel
 
-USER root
+#USER root
 
 # persistent / runtime deps
 ENV PHPIZE_DEPS \
