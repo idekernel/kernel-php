@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-#FROM debian:jessie
+FROM debian:jessie
 FROM idekernel/kernel
 
 USER root
@@ -88,7 +88,6 @@ RUN set -xe; \
 	apt-get purge -y --auto-remove $fetchDeps
 
 COPY docker-php-source /usr/local/bin/
-USER root
 RUN set -xe \
 	&& buildDeps=" \
 		$PHP_EXTRA_BUILD_DEPS \
