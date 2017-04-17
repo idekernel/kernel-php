@@ -21,6 +21,7 @@ RUN wget --quiet https://github.com/zeromq/libzmq/releases/download/v4.2.1/zerom
 	&& make install
 #install php-zmq
 #RUN mkdir -p /usr/src/php/ext
+RUN COPY docker-php-ext-* docker-php-entrypoint docker-php-source /usr/local/bin/
 RUN docker-php-source extract
 RUN git clone https://github.com/mkoppanen/php-zmq.git \
 	&& mv php-zmq/ /usr/src/php/ext/ \
