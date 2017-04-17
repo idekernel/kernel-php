@@ -7,6 +7,8 @@
 #FROM debian:jessie
 FROM idekernel/kernel
 
+USER root
+
 # persistent / runtime deps
 ENV PHPIZE_DEPS \
 		autoconf \
