@@ -1,6 +1,7 @@
 FROM php
 FROM idekernel/kernel
 USER root
+COPY docker-php-source docker-php-ext-* docker-php-entrypoint /usr/local/bin/
 RUN apt-get update && apt-get install -y \
 		libfreetype6-dev \
 		libjpeg62-turbo-dev \
