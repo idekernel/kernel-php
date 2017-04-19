@@ -32,4 +32,5 @@ RUN curl -sS https://getcomposer.org/installer | php \
         && mv composer.phar /usr/local/bin/composer
 RUN wget --quiet https://litipk.github.io/Jupyter-PHP-Installer/dist/jupyter-php-installer.phar \
     && php ./jupyter-php-installer.phar install
+RUN rm -Rf *
 USER $NB_USER
