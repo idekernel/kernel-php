@@ -1,5 +1,4 @@
-FROM php
-FROM idekernel/kernel:notebook
+FROM idekernel/php:notebook
 USER root
 RUN apt-get update && apt-get install -y \
 		libfreetype6-dev \
